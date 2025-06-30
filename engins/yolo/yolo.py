@@ -33,7 +33,7 @@ class YoloDectect:
             logger.warn(f"transfer model yolo11{model_size}.onnx done")
         self.model = YOLO(model_path, task="detect")
         logger.info("YoloDectect load model done")
-        # self.preheat()
+        self.preheat()
 
     def preheat(self):
         logger.info("YoloDectect preheat model......")
