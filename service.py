@@ -106,7 +106,6 @@ class AiEngineService(ai_engine_pb2_grpc.AiEngineServiceServicer):
                     "det_score": face.det_score.astype(float),
                     "embedding": face.embedding.astype(float).tolist(),
                 }
-                print(item)
                 simplified_results.append(json.dumps(item))
             cost_time = time.time() - start
             logger.info(
