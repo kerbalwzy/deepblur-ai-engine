@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package ai_engine;
+
+message YoloDetRequest {
+    repeated int32 classes = 1;
+    repeated bytes images = 2;
+    bool stream = 3;
+}
+
+message YoloDetResponse {
+    repeated string detections = 1;
+}
+
+message InsightFaceRecRequest {
+    bytes image = 1;
+    int32 max_num = 2;
+}
+
+message InsightFaceRecResponse {
+    repeated string faces = 1;
+}
+
+service AiEngineService {
+  rpc YoloDetect(YoloDetRequest) returns (YoloDetResponse) {}
+  rpc InsightFaceRec(InsightFaceRecRequest) returns (InsightFaceRecResponse) {}
+}

@@ -1,0 +1,25 @@
+# 忽略版本控制
+.git
+.gitignore
+
+# 忽略 Python 缓存和临时文件
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# 忽略测试和临时文件
+test_datas/
+test*.jpg
+*.log
+*.tmp
+
+
+# 忽略开发环境文件
+.venv/
+venv/
+*.env
+
+# 忽略 Docker Compose 和其他构建文件
+docker-compose.yml
+Dockerfile.bak

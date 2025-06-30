@@ -1,0 +1,26 @@
+services:
+  deepblur_ai_engine:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: deepblur_ai_engine:latest
+    container_name: deepblur_ai_engine
+    runtime: nvidia
+    environment:
+      - NVIDIA_VISIBLE_DEVICES=all
+    ports:
+      - "34567:34567"
+    volumes:
+      - ./:/app
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              capabilities: [gpu]
+    healthcheck:
+      test: ["CMD", "python3", "-c", "import grpc; channel = grpc.insecure_channel('localhost:25629'); channel.close()"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    restart: unless-stopped
